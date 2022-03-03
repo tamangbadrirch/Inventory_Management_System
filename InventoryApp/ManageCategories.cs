@@ -46,6 +46,9 @@ namespace InventoryApp
                 MessageBox.Show("Category Successfully Added!");
                 con.Close();
                 populate();
+                txtCatID.Text = "";
+                txtCatName.Text = "";
+                txtCatID.Focus();
             }
             catch
             {
@@ -95,8 +98,13 @@ namespace InventoryApp
 
         private void CategoriesGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCatID.Text = CategoriesGV.SelectedRows[0].Cells[0].Value.ToString();
-            txtCatName.Text = CategoriesGV.SelectedRows[0].Cells[1].Value.ToString();
+
+            /*txtCatID.Text = CategoriesGV.SelectedRows[0].Cells[0].Value.ToString();
+            txtCatName.Text = CategoriesGV.SelectedRows[0].Cells[1].Value.ToString();*/
+            int index = CategoriesGV.CurrentCell.ColumnIndex;
+            int selectedRow = e.RowIndex;
+            txtCatID.Text = CategoriesGV.Rows[selectedRow].Cells["CatId"].Value.ToString();
+            txtCatName.Text = CategoriesGV.Rows[selectedRow].Cells["CatName"].Value.ToString();
         }
 
         private void ManageCategories_Load(object sender, EventArgs e)

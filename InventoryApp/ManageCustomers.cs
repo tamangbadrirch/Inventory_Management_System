@@ -83,9 +83,11 @@ namespace InventoryApp
 
         private void CustomersGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtCustID.Text = CustomersGV.SelectedRows[0].Cells[0].Value.ToString();
-            txtCustName.Text = CustomersGV.SelectedRows[0].Cells[1].Value.ToString();
-            txtCustPhone.Text = CustomersGV.SelectedRows[0].Cells[2].Value.ToString();
+            int index = CustomersGV.CurrentCell.ColumnIndex;
+            int selectedRow = e.RowIndex;
+            txtCustID.Text = CustomersGV.Rows[selectedRow].Cells["CustId"].Value.ToString();
+            txtCustName.Text = CustomersGV.Rows[selectedRow].Cells["CustName"].Value.ToString();
+            txtCustPhone.Text = CustomersGV.Rows[selectedRow].Cells["custPhone"].Value.ToString();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace InventoryApp
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("update CustomerTbl set CustName= '" + txtCustName.Text + "', where CustId='" + txtCustID.Text + "' ", con);
+                SqlCommand cmd = new SqlCommand("update CustomerTbl set CustName= '" + txtCustName.Text + "', CustPhone='" + txtCustPhone.Text + "' where CustId='" + txtCustID.Text + "' ", con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Customer Successfully Updated!");
                 con.Close();

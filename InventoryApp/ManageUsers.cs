@@ -75,7 +75,7 @@ namespace InventoryApp
             else
             {
                 con.Open();
-                string myquery = "delete from UserTbl where Upassword='" + txtPhone.Text + "'";
+                string myquery = "delete from UserTbl where Uphone='" + txtPhone.Text + "'";
                 SqlCommand cmd = new SqlCommand(myquery, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("User Successfully Deleted!");

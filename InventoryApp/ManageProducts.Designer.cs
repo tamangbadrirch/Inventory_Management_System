@@ -47,6 +47,9 @@ namespace InventoryApp
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblCustList = new System.Windows.Forms.Label();
             this.ProductsGV = new System.Windows.Forms.DataGridView();
+            this.cmbSearch = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsGV)).BeginInit();
             this.SuspendLayout();
@@ -195,6 +198,7 @@ namespace InventoryApp
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -209,6 +213,7 @@ namespace InventoryApp
             this.btnEdit.TabIndex = 18;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -230,7 +235,7 @@ namespace InventoryApp
             this.lblCustList.AutoSize = true;
             this.lblCustList.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustList.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblCustList.Location = new System.Drawing.Point(533, 160);
+            this.lblCustList.Location = new System.Drawing.Point(538, 151);
             this.lblCustList.Name = "lblCustList";
             this.lblCustList.Size = new System.Drawing.Size(183, 24);
             this.lblCustList.TabIndex = 22;
@@ -251,17 +256,62 @@ namespace InventoryApp
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ProductsGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ProductsGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductsGV.Location = new System.Drawing.Point(269, 198);
+            this.ProductsGV.Location = new System.Drawing.Point(269, 236);
             this.ProductsGV.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ProductsGV.Name = "ProductsGV";
-            this.ProductsGV.Size = new System.Drawing.Size(614, 373);
+            this.ProductsGV.Size = new System.Drawing.Size(614, 370);
             this.ProductsGV.TabIndex = 21;
+            this.ProductsGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductsGV_CellContentClick);
+            // 
+            // cmbSearch
+            // 
+            this.cmbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSearch.ForeColor = System.Drawing.Color.Crimson;
+            this.cmbSearch.FormattingEnabled = true;
+            this.cmbSearch.Location = new System.Drawing.Point(542, 203);
+            this.cmbSearch.Name = "cmbSearch";
+            this.cmbSearch.Size = new System.Drawing.Size(179, 26);
+            this.cmbSearch.TabIndex = 23;
+            this.cmbSearch.Text = "Search Product";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Red;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(729, 203);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(76, 25);
+            this.btnSearch.TabIndex = 24;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Red;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(806, 203);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(76, 25);
+            this.btnRefresh.TabIndex = 25;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ManageProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 661);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.cmbSearch);
             this.Controls.Add(this.lblCustList);
             this.Controls.Add(this.ProductsGV);
             this.Controls.Add(this.btnHome);
@@ -306,5 +356,8 @@ namespace InventoryApp
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblCustList;
         private System.Windows.Forms.DataGridView ProductsGV;
+        private System.Windows.Forms.ComboBox cmbSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
